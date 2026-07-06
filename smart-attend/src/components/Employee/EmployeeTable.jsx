@@ -77,7 +77,7 @@ export default function EmployeeTable({
                     </button>
 
                     <button
-                      onClick={() => onDelete(emp.id)}
+                      onClick={() => onDelete(emp._id)}
                       className="text-red-600 hover:text-red-800"
                     >
                       <Trash2 size={18} />

@@ -35,6 +35,7 @@ const leaveSchema = new mongoose.Schema(
       default: "Pending",
     },
   },
+  
   {
     timestamps: true,
   }

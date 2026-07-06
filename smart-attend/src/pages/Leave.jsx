@@ -11,23 +11,34 @@ export default function Leave() {
     fetchLeaves();
   }, []);
 
+  // Fetch all leave requests
   const fetchLeaves = async () => {
     try {
-      const res = await LeaveAPI.get("/leave");
-      setLeaves(res.data);
+      const res = await LeaveAPI.get("/");
+      setLeaves(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
-      console.log(error);
+      console.error("Fetch Leave Error:", error);
     }
   };
-  const updateStatus = async (id, status) => {
-  try {
-    await LeaveAPI.put(`/leave${id}`, { status });
 
-    fetchLeaves();
-  } catch (error) {
-    console.log(error);
-  }
-};
+  // Approve / Reject Leave
+  const updateStatus = async (id, status) => {
+    try {
+      await LeaveAPI.put(`/${id}`, { status });
+
+      alert(`Leave ${status} Successfully`);
+
+      fetchLeaves();
+    } catch (error) {
+      console.error("Update Error:", error);
+
+      if (error.response) {
+        console.log(error.response.data);
+      }
+
+      alert("Failed to update leave status.");
+    }
+  };
 
   return (
     <MainLayout>
@@ -46,7 +57,6 @@ export default function Leave() {
 
       <div className="bg-white rounded-xl shadow overflow-hidden">
         <table className="w-full">
-
           <thead className="bg-blue-600 text-white">
             <tr>
               <th className="p-4">Employee</th>
@@ -67,7 +77,7 @@ export default function Leave() {
                   className="border-b hover:bg-gray-50"
                 >
                   <td className="p-4">
-                    {leave.employee?.fullName}
+                    {leave.employee?.fullName || "N/A"}
                   </td>
 
                   <td>{leave.leaveType}</td>
@@ -95,29 +105,34 @@ export default function Leave() {
                       {leave.status}
                     </span>
                   </td>
-                  <td>
-  <div className="flex gap-2 justify-center">
-    <button
-      onClick={() => updateStatus(leave._id, "Approved")}
-      className="bg-green-500 text-white px-3 py-1 rounded"
-    >
-      Approve
-    </button>
 
-    <button
-      onClick={() => updateStatus(leave._id, "Rejected")}
-      className="bg-red-500 text-white px-3 py-1 rounded"
-    >
-      Reject
-    </button>
-  </div>
-</td>
+                  <td>
+                    <div className="flex gap-2 justify-center">
+                      <button
+                        onClick={() =>
+                          updateStatus(leave._id, "Approved")
+                        }
+                        className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded"
+                      >
+                        Approve
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          updateStatus(leave._id, "Rejected")
+                        }
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))
             ) : (
               <tr>
                 <td
-                  colSpan="6"
+                  colSpan="7"
                   className="text-center py-8 text-gray-500"
                 >
                   No leave requests found.
@@ -125,7 +140,6 @@ export default function Leave() {
               </tr>
             )}
           </tbody>
-
         </table>
       </div>
 
