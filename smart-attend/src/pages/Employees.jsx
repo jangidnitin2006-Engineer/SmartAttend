@@ -50,7 +50,7 @@ const addEmployee = async (newEmployee) => {
   try {
     console.log("Sending Data:", newEmployee);
 
-    const response = await API.post("/employees", newEmployee);
+    const response = await API.post("/", newEmployee);
 
     console.log("Employee Saved Successfully:", response.data);
 
@@ -87,7 +87,7 @@ const addEmployee = async (newEmployee) => {
 
   const updateEmployee = async (updatedEmployee) => {
     try {
-      await API.put(`/employees/${updatedEmployee._id}`, updatedEmployee);
+      await API.put(`/${updatedEmployee._id}`, updatedEmployee);
       fetchEmployees();
       setShowEditModal(false);
     } catch (error) {
@@ -104,7 +104,7 @@ const deleteEmployee = async (id) => {
   if (!confirmDelete) return;
 
   try {
-    await API.delete(`/employees/${id}`);
+    await API.delete(`/${id}`);
 
     fetchEmployees();
 
