@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AttendanceAPI = axios.create({
-  baseURL: "http://localhost:5000/api/attendance",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 AttendanceAPI.interceptors.request.use((config) => {
