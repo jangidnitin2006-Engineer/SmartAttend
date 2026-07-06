@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://smartattend-1-0a3x.onrender.com/api",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
-// Automatically attach JWT to every request
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 

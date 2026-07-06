@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../Layouts/MainLayout";
 import ProfileCard from "../components/ProfileCard";
 import CompanySettings from "../components/CompanySettings";
 import SecuritySettings from "../components/SecuritySettings";
