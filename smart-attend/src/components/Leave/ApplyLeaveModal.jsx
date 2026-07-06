@@ -40,7 +40,7 @@ export default function ApplyLeaveModal({
     e.preventDefault();
 
     try {
-      await LeaveAPI.post("/", formData);
+      await LeaveAPI.post("/leave", formData);
 
       alert("Leave Applied Successfully!");
 

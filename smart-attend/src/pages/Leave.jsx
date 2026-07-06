@@ -13,7 +13,7 @@ export default function Leave() {
 
   const fetchLeaves = async () => {
     try {
-      const res = await LeaveAPI.get("/");
+      const res = await LeaveAPI.get("/leave");
       setLeaves(res.data);
     } catch (error) {
       console.log(error);
@@ -21,7 +21,7 @@ export default function Leave() {
   };
   const updateStatus = async (id, status) => {
   try {
-    await LeaveAPI.put(`/${id}`, { status });
+    await LeaveAPI.put(`/leave${id}`, { status });
 
     fetchLeaves();
   } catch (error) {

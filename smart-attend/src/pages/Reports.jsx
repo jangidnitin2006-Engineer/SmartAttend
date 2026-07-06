@@ -22,9 +22,9 @@ export default function Reports() {
 
   const fetchData = async () => {
     try {
-      const emp = await API.get("/");
-      const att = await AttendanceAPI.get("/");
-      const leave = await LeaveAPI.get("/");
+      const emp = await API.get("/employees");
+      const att = await AttendanceAPI.get("/attendance");
+      const leave = await LeaveAPI.get("/leave");
 
       setEmployees(emp.data);
       setAttendance(att.data);
