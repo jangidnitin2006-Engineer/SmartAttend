@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const LeaveAPI = axios.create({
-  baseURL: "http://localhost:5000/api/leave",
+  baseURL: `${import.meta.env.VITE_API_URL}/leave`,
 });
 
 LeaveAPI.interceptors.request.use((config) => {
