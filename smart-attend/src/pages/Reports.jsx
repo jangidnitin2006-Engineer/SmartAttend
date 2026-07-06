@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../Layouts/MainLayout";
 import API from "../api/employeeApi";
 import AttendanceAPI from "../api/attendanceApi";
 import LeaveAPI from "../api/leaveApi";
