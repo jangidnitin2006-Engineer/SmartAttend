@@ -1,0 +1,13 @@
+POST http://localhost:5000/api/employees
+Content-Type: application/json
+
+{
+  "employeeId": "EMP001",
+  "fullName": "Nitin Jangid",
+  "email": "nitin@gmail.com",
+  "phone": "9876543210",
+  "department": "IT",
+  "designation": "Frontend Developer",
+  "salary": 45000,
+  "joiningDate": "2026-07-01"
+}
