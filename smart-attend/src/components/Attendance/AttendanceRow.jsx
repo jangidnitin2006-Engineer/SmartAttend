@@ -6,7 +6,7 @@ export default function AttendanceRow({ employee }) {
 
   const saveAttendance = async () => {
     try {
-      await AttendanceAPI.post("/", {
+      await AttendanceAPI.post("/attendance", {
         employee: employee._id,
         date: new Date(),
         status,

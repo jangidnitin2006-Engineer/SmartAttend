@@ -24,7 +24,7 @@ export default function Reports() {
     try {
       const emp = await API.get("/employees");
       const att = await AttendanceAPI.get("/attendance");
-      const leave = await LeaveAPI.get("/leave");
+      const leave = await LeaveAPI.get("/");
 
       setEmployees(emp.data);
       setAttendance(att.data);
